@@ -1,0 +1,6 @@
+Get-Process |
+Sort-Object WorkingSet -Descending |
+Select-Object -First 5 `
+    @{Name="ProcessName";Expression={$_.ProcessName}},
+    @{Name="PID";Expression={$_.Id}},
+    @{Name="Memory(MB)";Expression={[math]::Round($_.WorkingSet / 1MB, 2)}}

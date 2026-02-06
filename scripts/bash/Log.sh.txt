@@ -1,0 +1,17 @@
+#!/bin/bash
+
+LOGFILE="server.log"
+
+# Create dummy log file
+cat <<EOF > $LOGFILE
+System started successfully
+Error: Unable to connect to database
+User logged in
+Error: Disk not found
+Backup completed
+Error: Permission denied
+EOF
+
+COUNT=$(grep -c "Error" "$LOGFILE")
+
+echo "Number of lines containing 'Error': $COUNT"
